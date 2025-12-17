@@ -114,7 +114,9 @@ The data architecture follows a Lakehouse-style Medallion Architecture:
 
 - Handles retries and monitoring
 
-📂 Repository Structure
+## 📂 Repository Structure
+
+```text
 aws-etl-sql-pipeline/
 │
 ├── dags/                          # Airflow DAGs (MWAA)
@@ -124,16 +126,13 @@ aws-etl-sql-pipeline/
 │   └── glue_silver_hudi.py
 │
 ├── emr_jobs/                      # EMR Spark jobs (Silver → Gold)
-│   └── emr_gold_analytics.py
+│   └── emr_gold_agg.py
 │
-├── redshift/                      # Redshift SQL & stored procedures
-│   ├── external_schema.sql
-│   └── snapshot_procedures.sql
-│
-├── docs/                          # Architecture & data flow diagrams
+├── sql/                           # Redshift SQL scripts
+│   └── reporting_snapshots.sql
 │
 ├── README.md
-├── LICENSE
+
 
 ## 🧠 Key Concepts Demonstrated
 
