@@ -1,117 +1,118 @@
 # Apache-Spark-End-To-End-DE-Project-on-AWS-cloud
-Designing End-to-End Pipeline in AWS leveraging services like DMS,S3,Glue,EMR,Airflow
-🏗️ Data Architecture
+Designing End-to-End Pipeline in AWS leveraging services like DMS, S3, Glue, EMR, Airflow
+
+## 🏗️ Data Architecture
 
 The data architecture follows a Lakehouse-style Medallion Architecture:
 
-🥉 Bronze Layer (Raw)
+### 🥉 Bronze Layer (Raw)
 
-Raw CSV files stored in Amazon S3
+- Raw CSV files stored in **Amazon S3**
 
-Represents source system data (customers, products, transactions)
+- Represents source system data (customers, products, transactions)
 
-No transformations applied
+- No transformations applied
 
-🥈 Silver Layer (Cleaned / Data Lake)
+### 🥈 Silver Layer (Cleaned / Data Lake)
 
-Data processed using AWS Glue (PySpark)
+- Data processed using AWS Glue (PySpark)
 
-Basic cleansing and standardization applied
+- Basic cleansing and standardization applied
 
-Stored as Apache Hudi tables in S3
+- Stored as Apache Hudi tables in S3
 
-Metadata registered in AWS Glue Data Catalog
+- Metadata registered in AWS Glue Data Catalog
 
-🥇 Gold Layer (Analytics)
+### 🥇 Gold Layer (Analytics)
 
-Aggregations computed using Apache Spark on EMR
+- Aggregations computed using Apache Spark on EMR
 
-Business-level metrics generated:
+- Business-level metrics generated:
 
-Customer metrics
+- Customer metrics
 
-Product analytics
+- Product analytics
 
-Stored as Hudi analytics tables in S3
+- Stored as Hudi analytics tables in S3
 
-📊 Reporting Layer
+### 📊 Reporting Layer
 
-Amazon Redshift external schema reads Gold Hudi tables via Glue Catalog
+- Amazon Redshift external schema reads Gold Hudi tables via Glue Catalog
 
-Snapshot reporting tables created inside Redshift
+- Snapshot reporting tables created inside Redshift
 
-SQL-based analytics for dashboards and BI tools
+- SQL-based analytics for dashboards and BI tools
 
-📖 Project Overview
+## 📖 Project Overview
 
-This project showcases:
+## This project showcases:
 
-End-to-End ETL orchestration using Apache Airflow (MWAA)
+- End-to-End ETL orchestration using Apache **Airflow** (MWAA)
 
-Distributed data processing with Spark (Glue & EMR)
+- Distributed data processing with **Spark** (Glue & EMR)
 
-Incremental data storage using Apache Hudi
+- Incremental data storage using **Apache Hudi**
 
-Cloud-native data lake & warehouse design
+- Cloud-native data lake & warehouse design
 
-Analytical reporting using Amazon Redshift
+- Analytical reporting using **Amazon Redshift**
 
-Production-grade patterns such as idempotent loads and snapshot tables
+- Production-grade patterns such as idempotent loads and snapshot tables
 
-🚀 Project Requirements
-Data Engineering Objective
+## 🚀 Project Requirements
+**Data Engineering Objective**
 
-Build a cloud-native data warehouse on AWS to consolidate transactional data and enable analytical reporting.
+- Build a cloud-native data warehouse on AWS to consolidate transactional data and enable analytical reporting.
 
-Specifications
+## Specifications
 
-Data Sources: CSV files stored in Amazon S3
+- Data Sources: CSV files stored in Amazon S3
 
-Data Processing:
+### Data Processing:
 
-AWS Glue for Silver layer transformation
+- **AWS Glue** for Silver layer transformation
 
-EMR Spark jobs for Gold layer analytics
+- **EMR Spark** jobs for Gold layer analytics
 
-Storage Format: Apache Hudi (Copy-on-Write)
+- **Storage Format**: Apache Hudi (Copy-on-Write)
 
-Metadata Management: AWS Glue Data Catalog
+- **Metadata Management**: AWS Glue Data Catalog
 
-Orchestration: Apache Airflow (MWAA)
+- **Orchestration**: Apache Airflow (MWAA)
 
-Warehouse: Amazon Redshift
+- **Warehouse**: Amazon Redshift
 
-Reporting Strategy: Daily snapshot tables
+- **Reporting Strategy**: Daily snapshot tables
 
-🔄 ETL Pipeline Flow
+## 🔄 ETL Pipeline Flow
 
-Glue Job
+- Glue Job
 
-Reads raw data from S3 (Bronze)
+- Reads raw data from S3 (Bronze)
 
-Applies cleansing and enrichment
+- Applies cleansing and enrichment
 
-Writes Hudi tables to Silver layer
+- Writes Hudi tables to Silver layer
 
-EMR Spark Job
+- EMR Spark Job
 
-Reads Silver Hudi tables
+- Reads Silver Hudi tables
 
-Computes analytical aggregates
+- Computes analytical aggregates
 
-Writes Gold Hudi tables
+- Writes Gold Hudi tables
 
-Redshift Load
+- Redshift Load
 
-External schema reads Gold tables via Glue Catalog
+- External schema reads Gold tables via Glue Catalog
 
-Stored procedure generates snapshot reporting tables
+- Stored procedure generates snapshot reporting tables
 
-Airflow Orchestration
+- Airflow Orchestration
 
-Ensures correct execution order
+- Ensures correct execution order
 
-Handles retries and monitoring
+- Handles retries and monitoring
 
 📂 Repository Structure
 aws-etl-sql-pipeline/
@@ -134,21 +135,21 @@ aws-etl-sql-pipeline/
 ├── README.md
 ├── LICENSE
 
-🧠 Key Concepts Demonstrated
+## 🧠 Key Concepts Demonstrated
 
-Medallion Architecture (Bronze / Silver / Gold)
+- Medallion Architecture (Bronze / Silver / Gold)
 
-Apache Hudi for incremental data lakes
+- Apache Hudi for incremental data lakes
 
-Spark-based large-scale processing
+- Spark-based large-scale processing
 
-Airflow-based orchestration
+- Airflow-based orchestration
 
-Redshift external schema & snapshot modeling
+- Redshift external schema & snapshot modeling
 
-Idempotent and re-runnable pipelines
+- Idempotent and re-runnable pipelines
 
-🏁 Conclusion
+## 🏁 Conclusion
 
 This project represents a real-world AWS data engineering pipeline, combining batch processing, data lakehouse design, and analytical reporting.
 It is designed to reflect production patterns commonly used in modern data platforms.
